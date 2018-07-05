@@ -20,7 +20,6 @@ export class Container extends React.Component {
     console.log("bounds",bounds);
 
 
-
     const style = {
       width: '70vw',
       height: '50vw',
@@ -37,6 +36,7 @@ export class Container extends React.Component {
               google={this.props.google} 
               markers={this.props.markers} 
               bounds={bounds} 
+              zoom={10}
               initialCenter={{lat: 43.653427, lng: -79.470211}}
               >
                {this.props.markers.map(marker => 
@@ -49,6 +49,7 @@ export class Container extends React.Component {
                     <h1>Place Name</h1>
                   </div>
               </InfoWindow>
+              {/* {this.props.google.maps.Map.fitBounds()} */}
             </Map>
             <ul>
 
