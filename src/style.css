@@ -20,7 +20,7 @@ text-align: center;
  text-align: center;
  text-transform: uppercase;
  letter-spacing: 5px;
- background-color: turquoise;
+ background-color: rgba(0, 217, 255, 0.616);
  padding: 20px 30px;
  display: inline-block;
  border: 2px solid black;
@@ -29,8 +29,11 @@ text-align: center;
 
 .loadingThing {
   font-weight: lighter;
-  background-color: orangered;
   padding: 20px 30px;
+}
+
+.loadingThing h2 {
+  font-weight: lighter;
 }
 
 /* FORM VIEW */
@@ -41,8 +44,8 @@ border: 2px solid black;
 height: 65px;
 margin: auto;
 margin-top: 50px;
-margin-bottom: 40px;
-background: rgb(255, 196, 0);
+margin-bottom: 60px;
+background: rgba(255, 196, 0, 0.8);
 text-align: center;
 padding: 20px 0px;
 }
@@ -56,7 +59,7 @@ outline:0px;
 padding-left: 10px;
 }
 input[type=submit] {
-background: hotpink;
+background: rgba(255,122,123,1);
 height: 45px;
 padding: 5px 20px;
 }
@@ -133,10 +136,10 @@ ul.productsList li div h5 {
 div.result {
   max-width: 1000px;
   width: 70vw;
-  height: 140px;
+  height:90px;
   border: 2px solid rgba(30, 19, 63, 1);
   margin: 30px auto;
-  background: rgba(255,255,255,0.6);
+  background: rgba(255,255,255,0.8);
   text-align: center;
   clear:both;
   float:none;
@@ -144,12 +147,13 @@ div.result {
 div.result img {
   float:left;
   margin:20px;
-  max-height:100px;
+  max-height:50px;
 }
 div.result p {
   float:left;
   display:inline-block;
   max-width: calc(80%-100px);
+  margin-top: 35px;
 }
 
 /* MAP CONTAINER */

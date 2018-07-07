@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import ProductList from './ProductList';
+import Loading from './Loading';
 
 import { fetchLcboEndpoint } from "../api/lcbo.js";
 
@@ -24,7 +25,6 @@ class Form extends Component {
       }
     
     handleSubmit(event) {
-      // alert('A name was submitted: ' + this.state.query);
       event.preventDefault();
       this.setState({isLoading: true})
       fetchLcboEndpoint("products", {
@@ -41,7 +41,7 @@ class Form extends Component {
           }
           
         })
-        .catch(error => alert(error.message))
+        .catch(error => alert(error.message));
     }
 
     handleLoading() {
@@ -64,7 +64,7 @@ class Form extends Component {
                 <br />
                 <input className="buttonizer" type="submit" value="GET TIPSY" />
             </form>
-            { isLoading ? <div className="loadingThing centerText"><h2> GETTING LOADED </h2></div> : null }
+            { isLoading ? <Loading message={'GETTING LOADED'}/> : null }
             { showResults && <ProductList loading={this.handleLoading} products={products}/> }
         </div>
       )

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import MapContainer from "./MapContainer";
+import Container from "./Container";
+import Loading from "./Loading";
 import { fetchLcboEndpoint } from "../api/lcbo.js";
 
 
@@ -10,38 +11,53 @@ class StoreView extends Component {
         productID: this.props.selectedProduct.id,
         selectedProduct: this.props.selectedProduct,
         stores: [],
-        showResults: false
+        showResults: false,
+        isLoading: true 
       }
  
     }
 
     componentDidMount() {
-      fetchLcboEndpoint("stores", "product_id", {
-        q: this.state.productID
+      fetchLcboEndpoint("stores", {
+        product_id: this.state.productID,
+        per_page: 40
       }).then(data => {
-        console.log("STORE",data)
+        console.log("ALL STORES", data.result)
+        const storesWithProduct = [];
+        // For whatever reason cannot get spread operator syntax to work here. I'm just gonna roll with it.
+  
+        data.result.map(store => store.quantity !== 0 ? storesWithProduct.push(store) : storesWithProduct)
         this.setState({
-          stores: data.result,
+          stores: storesWithProduct,
           showResults: true
         })
+        console.log("WITH PRODUCT", this.state.stores);
       });
-    }
-
-    componentDidUpdate() {
-
-    }
-    
-    
+    }  
   
     render() {
+      const { image_thumb_url, name } = this.state.selectedProduct;
       return (
-        <div className="Results StoreView">
-            <div className="result">
-            <img src={this.state.selectedProduct.image_thumb_url} alt={this.state.selectedProduct.name}/>
-            <p>{this.state.selectedProduct.name} is available at the following stores:</p>
+        this.state.showResults 
+        ? (
+        <div>
+
+            <div className="Results StoreView">
+              <div className="result">
+                <img src={image_thumb_url} alt={name}/>
+                <p>{name} is available at the following {this.state.stores.length} stores:</p>
+              </div>
             </div>
-            { this.state.showResults && <MapContainer markers={this.state.stores}/> }
+            <Container selectedProduct={this.state.selectedProduct} storesWithProduct={this.state.stores}/> 
+
         </div>
+        )
+        : (
+          <div>
+            <Loading message={"TURNING UP!!"}/>
+          </div>
+        )
+
       )
     }
   }

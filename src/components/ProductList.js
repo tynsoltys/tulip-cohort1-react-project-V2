@@ -9,7 +9,7 @@ class ProductList extends Component {
         products: this.props.products,        // Stores an array of objects which contain id, long and lat of each store
         showProducts: true,
         showMap: false,
-        selectedProduct: '', 
+        selectedProduct: ''
       }
       this.handleSelect = this.handleSelect.bind(this);
     }
