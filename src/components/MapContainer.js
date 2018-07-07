@@ -19,19 +19,11 @@ export class Container extends React.Component {
     }
     console.log("bounds",bounds);
 
-
-    const style = {
-      width: '70vw',
-      height: '50vw',
-      border: '3px solid black',
-      margin: 'auto',
-      position: 'relative'
-    }
     if (!this.props.loaded) {
-      return <div>Loading...</div>
+      return <div class="centerText">SHOPS, SHOPS, SHOPS, SHOPSSHOPSSHOPS</div>
     }
     return (
-      <div style={style}>
+      <div className="mapContainer">
             <Map 
               google={this.props.google} 
               markers={this.props.markers} 
@@ -51,9 +43,8 @@ export class Container extends React.Component {
               </InfoWindow>
               {/* {this.props.google.maps.Map.fitBounds()} */}
             </Map>
-            <ul>
-
-            </ul>
+            
+            <a href="#" className="buttonizer"><h3 className="centerText">SOMETHING ELSE</h3></a>
 
       </div>
     )
