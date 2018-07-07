@@ -8,9 +8,7 @@ class Form extends Component {
     constructor(props) {
       super(props);
       this.state = { 
-        // Stores the initial search query
         query: '',
-        // We are just going to get products here
         products: [],
         showResults: false,
         isLoading: false, 

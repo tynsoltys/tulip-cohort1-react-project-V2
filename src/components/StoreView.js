@@ -11,8 +11,7 @@ class StoreView extends Component {
         productID: this.props.selectedProduct.id,
         selectedProduct: this.props.selectedProduct,
         stores: [],
-        showResults: false,
-        isLoading: true 
+        showResults: false
       }
  
     }

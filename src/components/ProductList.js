@@ -22,9 +22,7 @@ class ProductList extends Component {
 
     // This will set the state to the chosen product
     handleSelect(product) {
-      console.log(product);
       this.setState({selectedProduct: product, showProducts: false, showMap: true});
-      console.log(`You have chosen ${product.id}`);
     }
     
     
